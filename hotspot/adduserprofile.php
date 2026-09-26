@@ -60,7 +60,7 @@ if (!isset($_SESSION["mikhmon"])) {
 
     $parent = ($_POST['parent']);
     
-    $record = '; :local mac $"mac-address"; :local time [/system clock get time ]; /system script add name="$date-|-$time-|-$user-|-'.$price.'-|-$address-|-$mac-|-' . $validity . '-|-'.$name.'-|-$comment" owner="$month$year" source="$date" comment="mikhmon"';
+    $record = '; :local mac $"mac-address"; :local time [/system clock get time ]; :local year [:pick $date 0 4]; :local monthnum [:pick $date 5 7]; :local montharray ("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"); :local month [:pick $montharray ([:tonum $monthnum] - 1)]; /system script add name="$date-|-$time-|-$user-|-'.$price.'-|-$address-|-$mac-|-' . $validity . '-|-'.$name.'-|-$comment" owner="$month$year" source="$date" comment="mikhmon"';
     
     // RouterOS 7 returns scheduler next-run as YYYY-MM-DD HH:MM:SS. Keep that
     // ISO timestamp intact so the monitor can compare it without date conversion.
