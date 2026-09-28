@@ -24,10 +24,13 @@ Android cannot run `MikhmonServer.exe`, but Mikhmon can run as a PHP server in T
 ```sh
 pkg update
 pkg install git php
-git clone https://github.com/codewithjihad1/mikhmon-ros-v7-compitable.git
-cd mikhmon-ros-v7-compitable
+cd ~
+git clone https://github.com/codewithjihad1/mikhmon-ros-v7-compitable.git mikhmon
+cd ~/mikhmon
 php -S 0.0.0.0:8080 -t .
 ```
+
+Keep the project under Termux home (`~/mikhmon`), not `/sdcard`, `Download`, or other shared Android storage. PHP cannot create its server lock file in some shared-storage locations, which causes `Cannot create lock - Permission denied (13)`.
 
 Open `http://127.0.0.1:8080` on the Android device. Keep Termux running while using Mikhmon. The Android device and MikroTik router must be on the same network, and RouterOS API access must be enabled on port `8728` (or `8729` for API-SSL).
 
