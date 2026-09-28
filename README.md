@@ -17,6 +17,20 @@ HOST=0.0.0.0 PORT=8080 ./start-mikhmon.sh
 
 The MikroTik router must be reachable from the Ubuntu machine on API port `8728` (or API-SSL port `8729` when configured).
 
+### Android with Termux
+
+Android cannot run `MikhmonServer.exe`, but Mikhmon can run as a PHP server in Termux. Install Termux from F-Droid, then run:
+
+```sh
+pkg update
+pkg install git php
+git clone https://github.com/codewithjihad1/mikhmon-ros-v7-compitable.git
+cd mikhmon-ros-v7-compitable
+php -S 0.0.0.0:8080 -t .
+```
+
+Open `http://127.0.0.1:8080` on the Android device. Keep Termux running while using Mikhmon. The Android device and MikroTik router must be on the same network, and RouterOS API access must be enabled on port `8728` (or `8729` for API-SSL).
+
 ### MIKHMON V3
 
 #### Download update.zip
