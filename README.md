@@ -1,3 +1,22 @@
+### Ubuntu/Linux
+
+`MikhmonServer.exe` is a Windows-only bundled PHP server. On Ubuntu, install PHP CLI and use the included Linux launcher:
+
+```sh
+sudo apt update
+sudo apt install php-cli
+chmod +x start-mikhmon.sh
+./start-mikhmon.sh
+```
+
+Open http://127.0.0.1:8080 in a browser. To allow access from another device on the LAN, start it with:
+
+```sh
+HOST=0.0.0.0 PORT=8080 ./start-mikhmon.sh
+```
+
+The MikroTik router must be reachable from the Ubuntu machine on API port `8728` (or API-SSL port `8729` when configured).
+
 ### MIKHMON V3
 
 #### Download update.zip
